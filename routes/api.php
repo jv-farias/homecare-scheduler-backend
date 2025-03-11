@@ -1,19 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AttendanceController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'attendances'], function () {
+    Route::get('/', [AttendanceController::class, 'index']);
+    Route::get('/metrics', [AttendanceController::class, 'metrics']);
+    Route::post('/', [AttendanceController::class, 'store']);
+    Route::get('/{id}', [AttendanceController::class, 'show']);
+    Route::put('/{id}', [AttendanceController::class, 'update']);
+    Route::delete('/{id}', [AttendanceController::class, 'destroy']);
 });
