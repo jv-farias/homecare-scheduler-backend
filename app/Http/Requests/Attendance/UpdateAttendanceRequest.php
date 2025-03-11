@@ -27,7 +27,7 @@ class UpdateAttendanceRequest extends FormRequest
             'address' => 'sometimes|string|max:500',
             'request_reason' => 'sometimes|string|in:general_consultation,fever_symptoms,trauma_injury,cardiac_emergency,respiratory_problem,other',
             'symptoms' => 'nullable|string|max:500',
-            'status' => 'sometimes' | 'string' | 'in:pending,assigned,in_progress,completed,cancelled'
+            'status' => 'sometimes|string|in:pending,assigned,in_progress,completed,cancelled'
         ];
     }
 }
