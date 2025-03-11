@@ -65,15 +65,15 @@ class AttendanceService
     public function getMetrics()
     {
         $totalAttendances = $this->repository->findAll()->count();
+        $totalAttendancesToday = $this->repository->findAll()->where('created_at', '>=', now()->startOfDay())->count();
         $totalCompletedAttendances = $this->repository->findAll()->where('status', 'completed')->count();
         $totalPendingAttendances = $this->repository->findAll()->where('status', 'pending')->count();
-        $totalCanceledAttendances = $this->repository->findAll()->where('status', 'canceled')->count();
 
         return [
-            'total_attendances' => $totalAttendances,
-            'total_completed_attendances' => $totalCompletedAttendances,
-            'total_pending_attendances' => $totalPendingAttendances,
-            'total_canceled_attendances' => $totalCanceledAttendances,
+            'total' => $totalAttendances,
+            'today' => $totalAttendancesToday,
+            'completed' => $totalCompletedAttendances,
+            'pending' => $totalPendingAttendances,
         ];
     }
 

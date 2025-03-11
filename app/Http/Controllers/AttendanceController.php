@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateAttendanceRequest;
-use App\Http\Requests\UpdateAttendanceRequest;
+use App\Http\Requests\Attendance\CreateAttendanceRequest;
+use App\Http\Requests\Attendance\UpdateAttendanceRequest;
 use App\Http\Traits\ApiResponserTrait;
 use App\Services\AttendanceService;
 
